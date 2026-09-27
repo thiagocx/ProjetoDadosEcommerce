@@ -1,3 +1,4 @@
+# .gitignore - Databricks project exclusions
 # Databricks Genie Space files are not supported in Git folders
 *.geniespace.json
 
