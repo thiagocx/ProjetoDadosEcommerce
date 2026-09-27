@@ -1,0 +1,20 @@
+# The main pipeline for projeto_ecommerce
+
+resources:
+  pipelines:
+    projeto_ecommerce_etl:
+      name: projeto_ecommerce_etl
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: "../src/projeto_ecommerce_etl"
+
+      libraries:
+        - glob:
+            include: ../src/projeto_ecommerce_etl/transformations/**
+
+      environment:
+        dependencies:
+          # We include every dependency defined by pyproject.toml by defining an editable environment
+          # that points to the folder where pyproject.toml is deployed.
+          - --editable ${workspace.file_path}
